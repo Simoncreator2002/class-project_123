@@ -1,3 +1,25 @@
 # class-project_123
-![Screenshot 2025-02-23 112006](https://github.com/user-attachments/assets/16bc20c6-764e-4e26-b3db-21129569e646)
-![Screenshot 2025-02-24 015712](https://github.com/user-attachments/assets/992d674a-e3f9-4522-8510-48432db4f5cb)
+Pseudocode that swaps two numbers:
+
+//Declare variables
+DECLARE num1, num2, x
+
+//Input numbers
+PRINT "Enter First number"
+Enter num1
+PRINT "Enter second number"
+Enter num2
+
+//Swap numbers using a temporary variable x
+x to nun1
+num1 to num2
+num2 to x
+
+//output the swapped values
+PRINT "After swapping"
+PRINT "First number", num1
+PRINT "Second number",num2
+
+
+
+
