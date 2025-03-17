@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " "; // O(n)
+    }
+    cout << endl;
+}
+
+int main() {
+    int numbers[] = {5, 10, 15, 20, 25}; // Example array
+    int size = sizeof(numbers) / sizeof(numbers[0]); // Calculate the size of the array
+
+    cout << "Array elements: ";
+    printArray(numbers, size);
+
+    return 0;
+}
+
+QUARDRATIC TIME COMPLEXITY O(n2
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]); // Swap if the element is greater than the next one
+            }
+        }
+    }
+}
+
+// Function to print the array
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int numbers[] = {64, 25, 12, 22, 11}; // Example array
+    int size = sizeof(numbers) / sizeof(numbers[0]); // Calculate array size
+
+    cout << "Unsorted array: ";
+    printArray(numbers, size);
+
+    bubbleSort(numbers, size); // Sort the array
+
+    cout << "Sorted array: ";
+    printArray(numbers, size);
+
+    return 0;
+}

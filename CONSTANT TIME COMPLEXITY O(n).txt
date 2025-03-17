@@ -1,0 +1,14 @@
+CONSTANT TIME COMPLEXITY O(n)
+#include <iostream>
+using namespace std;
+
+int firstElement(int arr[]) {
+    return arr[0]; // O(1)
+}
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50}; // Example array
+    cout << "The first element is: " << firstElement(numbers) << endl;
+    return 0;
+}
+
