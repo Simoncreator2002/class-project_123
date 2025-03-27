@@ -13,35 +13,35 @@ int main()
 
     printf("Enter marks for Physics:\n");
     printf("Assignment: ");
-   scanf_s("%f", &physics_assignment);
+   scanf("%f", &physics_assignment);
     printf("Coursework: ");
-    scanf_s("%f", &physics_coursework);
+    scanf("%f", &physics_coursework);
     printf("Midterm: ");
-    scanf_s("%f", &physics_midterm);
+    scanf("%f", &physics_midterm);
     printf("End of Term Exam: ");
-   scanf_s("%f", &physics_endterm);
+   scanf("%f", &physics_endterm);
 
 
     printf("\nEnter marks for Chemistry:\n");
     printf("Assignment: ");
-   scanf_s("%f", &chemistry_assignment);
+   scanf("%f", &chemistry_assignment);
     printf("Coursework: ");
-    scanf_s("%f", &chemistry_coursework);
+    scanf("%f", &chemistry_coursework);
     printf("Midterm: ");
-    scanf_s("%f", &chemistry_midterm);
+    scanf("%f", &chemistry_midterm);
     printf("End of Term Exam: ");
     scanf("%f", &chemistry_endterm);
 
 
     printf("\nEnter marks for Math:\n");
     printf("Assignment: ");
-  scanf_s("%f", &math_assignment);
+  scanf("%f", &math_assignment);
     printf("Coursework: ");
-     scanf_s("%f", &math_coursework);
+     scanf("%f", &math_coursework);
     printf("Midterm: ");
-   scanf_s("%f", &math_midterm);
+   scanf("%f", &math_midterm);
     printf("End of Term Exam: ");
-     scanf_s("%f", &math_endterm);
+     scanf("%f", &math_endterm);
 
 
     avg_physics = (physics_assignment + physics_coursework + physics_midterm + physics_endterm) / 4;
@@ -59,20 +59,20 @@ int main()
 
 /*int n, x;
 printf("Enter the number of domestic animals: ");
-scanf_s("%d", &n);
+scanf("%d", &n);
 
 char domestic_animals[n][50];
 for(int i=0; i<n; i++){
     printf("Enter the domestic animal %d:", i+1);
-    scanf_s("%s", domestic_animals[i]);
+    scanf("%s", domestic_animals[i]);
 }
  printf("Enter the number of wild animals: ");
-scanf_s("%d", &x);
+scanf("%d", &x);
 
 char wild_animals[x][50];
 for(int i=0; i<x; i++){
     printf("Enter the domestic animal %d:", i+1);
-    scanf_s("%s", wild_animals[i]);
+    scanf("%s", wild_animals[i]);
 }
     printf("All the animals:\n ");
     for(int i=0; i<n; i++){
