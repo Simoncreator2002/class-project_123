@@ -23,12 +23,14 @@ public:
 
     // Push method to add a friend's name to the stack
     void push(string friendName) {
-        if (top < capacity == - 1) {  // Check if there is space in the stack
-            top++;
+        if (top == capacity - 1) {  // Check if the stack is full
+            cout << "Stack is full, can't add more friends." << endl;
+        } else if (friendName.empty()) {  // Check if input is empty
+            cout << "No name entered. Please enter a valid name." << endl;
+        } else {
+            top++;  // Move to the next available position
             stack[top] = friendName;
             cout << friendName << " has been added to the stack." << endl;
-        } else {
-            cout << "Stack is full, can't add more friends." << endl;
         }
     }
 
@@ -82,16 +84,20 @@ public:
 
 int main() {
     int numFriends;
+
+    // Ask user how many friends they want to add to the stack
     cout << "Enter the number of friends you want to add to the stack: ";
     cin >> numFriends;
 
+    // Create a Stack instance with the specified number of friends
     Stack friendStack(numFriends);
 
     // Input the friends' names
     string friendName;
     for (int i = 0; i < numFriends; i++) {
         cout << "Enter the name of friend #" << i + 1 << ": ";
-        cin >> friendName;
+        cin >> ws;  // Clear any leftover newline character
+        getline(cin, friendName);  // Allow for spaces in names
         friendStack.push(friendName);  // Push the friend's name onto the stack
     }
 
@@ -113,12 +119,14 @@ int main() {
         if (choice == 1) {
             // Push operation: Ask for the friend's name to push onto the stack
             cout << "Enter the friend's name to push onto the stack: ";
-            cin >> friendName;
+            cin >> ws;  // Clear any leftover newline character
+            getline(cin, friendName);  // Allow for spaces in names
             friendStack.push(friendName);
         } else if (choice == 2) {
             // Pop operation: Ask for the friend's name to pop from the stack
             cout << "Enter the friend's name to remove from the stack: ";
-            cin >> friendName;
+            cin >> ws;  // Clear any leftover newline character
+            getline(cin, friendName);  // Allow for spaces in names
             friendStack.pop(friendName);
         } else if (choice == 3) {
             // Peek operation: Show the top friend
@@ -137,4 +145,3 @@ int main() {
 
     return 0;
 }
-
