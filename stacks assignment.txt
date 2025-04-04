@@ -4,7 +4,6 @@
 using namespace std;
 
 class Stack {
-private:
     string* stack;     // Pointer to dynamically allocated array
     int top;           // Index to track the top of the stack
     int capacity;      // Capacity of the stack (size of the array)
@@ -24,7 +23,7 @@ public:
 
     // Push method to add a friend's name to the stack
     void push(string friendName) {
-        if (top < capacity - 1) {  // Check if there is space in the stack
+        if (top < capacity == - 1) {  // Check if there is space in the stack
             top++;
             stack[top] = friendName;
             cout << friendName << " has been added to the stack." << endl;
@@ -83,12 +82,9 @@ public:
 
 int main() {
     int numFriends;
-
-    // Ask user how many friends they want to add to the stack
     cout << "Enter the number of friends you want to add to the stack: ";
     cin >> numFriends;
 
-    // Create a Stack instance with the specified number of friends
     Stack friendStack(numFriends);
 
     // Input the friends' names
