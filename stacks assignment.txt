@@ -1,79 +1,59 @@
-#include <iostream>
-#include <string>
+#include <iostream>  // For input/output operations
+#include <string>    // For string class to handle friend names
 
 using namespace std;
 
 class Stack {
-    string* stack;     // Pointer to dynamically allocated array
-    int top;           // Index to track the top of the stack
-    int capacity;      // Capacity of the stack (size of the array)
+    string* stack;  // Dynamic array to store friend names
+    int top;        // Index of the top element
+    int capacity;   // Fixed size of the stack
 
 public:
-    // Constructor to initialize the stack with a given capacity
-    Stack(int cap) {
-        capacity = cap;
-        stack = new string[capacity]; // Dynamically allocate memory for the stack
-        top = -1;  // Stack is empty initially
+    Stack() {       // Constructor with predefined size
+        capacity = 5;  // Predefined stack size of 5
+        stack = new string[capacity];
+        top = -1;  // Stack starts empty
     }
 
-    // Destructor to free the dynamically allocated memory
-    ~Stack() {
-        delete[] stack;  // Deallocate memory for the stack
+    ~Stack() {      // Destructor to free memory
+        delete[] stack;
     }
 
-    // Push method to add a friend's name to the stack
-    void push(string friendName) {
-        if (top == capacity - 1) {  // Check if the stack is full
-            cout << "Stack is full, can't add more friends." << endl;
-        } else if (friendName.empty()) {  // Check if input is empty
-            cout << "No name entered. Please enter a valid name." << endl;
+    void push(string name) {  // Add a friend to the stack
+        if (top == capacity - 1) {
+            cout << "Stack is full!" << endl;
         } else {
-            top++;  // Move to the next available position
-            stack[top] = friendName;
-            cout << friendName << " has been added to the stack." << endl;
+            top++;
+            stack[top] = name;
+            cout << name << " added." << endl;
         }
     }
 
-    // Pop method to remove a specific friend from the stack
-    void pop(string friendName) {
-        if (top == -1) {
+    string pop() {  // Remove and return the top friend
+        if (top == -1) {  // Check if stack is empty
             cout << "The stack is empty, no friend to remove." << endl;
-        } else {
-            bool found = false;
-            // Search for the friend in the stack and remove it
-            for (int i = 0; i <= top; i++) {
-                if (stack[i] == friendName) {
-                    // Shift elements to fill the gap
-                    for (int j = i; j < top; j++) {
-                        stack[j] = stack[j + 1];
-                    }
-                    top--;  // Decrease top index to remove the friend
-                    cout << friendName << " has been removed from the stack." << endl;
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                cout << friendName << " is not in the stack." << endl;
-            }
+            return "";  // Return empty string since nothing can be popped
+        } else {  // If stack has elements
+            string removedFriend = stack[top];  // Step 1: Get the top item
+            top--;  // Step 2: Decrease top to remove it
+            cout << removedFriend << " has been removed from the stack." << endl;
+            return removedFriend;  // Step 3: Return the removed element
         }
     }
 
-    // Peek method to see the top friend without removing
-    void peek() {
+    void peek() {  // Show the top friend without removing
         if (top == -1) {
-            cout << "The stack is empty, no friend to peek." << endl;
+            cout << "Stack is empty!" << endl;
         } else {
-            cout << "The top friend is: " << stack[top] << endl;
+            cout << "Top friend: " << stack[top] << endl;
         }
     }
 
-    // Display the current elements in the stack
-    void display() {
-        if (top == -1) {  // Check if the stack is empty
-            cout << "The stack is empty." << endl;
+    void display() {  // Display all friends in the stack
+        if (top == -1) {
+            cout << "Stack is empty!" << endl;
         } else {
-            cout << "Current stack: ";
+            cout << "Stack: ";
             for (int i = 0; i <= top; i++) {
                 cout << stack[i] << " ";
             }
@@ -83,65 +63,43 @@ public:
 };
 
 int main() {
-    int numFriends;
+    Stack friendStack;  // Create stack with predefined size
+    string name;
 
-    // Ask user how many friends they want to add to the stack
-    cout << "Enter the number of friends you want to add to the stack: ";
-    cin >> numFriends;
-
-    // Create a Stack instance with the specified number of friends
-    Stack friendStack(numFriends);
-
-    // Input the friends' names
-    string friendName;
-    for (int i = 0; i < numFriends; i++) {
-        cout << "Enter the name of friend #" << i + 1 << ": ";
-        cin >> ws;  // Clear any leftover newline character
-        getline(cin, friendName);  // Allow for spaces in names
-        friendStack.push(friendName);  // Push the friend's name onto the stack
+    // Ask for four friends initially
+    cout << "Input four friends:\n";
+    for (int i = 0; i < 4; i++) {
+        cout << "Friend #" << i + 1 << ": ";
+        getline(cin, name);
+        friendStack.push(name);
     }
 
-    // Display the stack
-    friendStack.display();
+    friendStack.display();  // Show initial stack
 
-    // Perform user-defined operations
     int choice;
     do {
-        cout << "\nChoose an operation: \n";
-        cout << "1. Push (Add a friend to the stack)\n";
-        cout << "2. Pop (Remove a specific friend from the stack)\n";
-        cout << "3. Peek (View the top friend)\n";
-        cout << "4. Display the stack\n";
-        cout << "5. Exit\n";
-        cout << "Enter your choice: ";
+        // Display menu options
+        cout << "\n1. Add friend\n2. Remove friend\n3. See top friend\n4. Show stack\n5. Exit\n";
+        cout << "Choice: ";
         cin >> choice;
+        cin.ignore();  // Clear newline after choice
 
         if (choice == 1) {
-            // Push operation: Ask for the friend's name to push onto the stack
-            cout << "Enter the friend's name to push onto the stack: ";
-            cin >> ws;  // Clear any leftover newline character
-            getline(cin, friendName);  // Allow for spaces in names
-            friendStack.push(friendName);
+            cout << "Enter friend name: ";
+            getline(cin, name);
+            friendStack.push(name);
         } else if (choice == 2) {
-            // Pop operation: Ask for the friend's name to pop from the stack
-            cout << "Enter the friend's name to remove from the stack: ";
-            cin >> ws;  // Clear any leftover newline character
-            getline(cin, friendName);  // Allow for spaces in names
-            friendStack.pop(friendName);
+            friendStack.pop();
         } else if (choice == 3) {
-            // Peek operation: Show the top friend
             friendStack.peek();
         } else if (choice == 4) {
-            // Display operation: Show the current stack
             friendStack.display();
         } else if (choice == 5) {
-            // Exit the program
-            cout << "Exiting program..." << endl;
+            cout << "Goodbye!" << endl;
         } else {
-            cout << "Invalid choice, try again." << endl;
+            cout << "Invalid choice!" << endl;
         }
-
-    } while (choice != 5);  // Loop until the user chooses to exit
+    } while (choice != 5);  // Loop until exit
 
     return 0;
 }
